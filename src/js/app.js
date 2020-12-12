@@ -59,12 +59,66 @@ function loadStories() {
 
 async function presentToast(msg, color) {
     const toast = document.createElement('ion-toast');
+
     toast.message = msg;
     toast.color = color;
     toast.duration = 2000;
 
     document.body.appendChild(toast);
     return toast.present();
+}
+
+async function presentProfileResetAlert() {
+    const alert = document.createElement('ion-alert');
+
+    alert.header = 'Do you want to reset your profile?';
+    alert.subHeader = 'You cannot undo this action';
+    alert.buttons = [
+        {
+            text: 'Cancel'
+        },
+        {
+            text: 'Confirm',
+            handler: () => {
+                defaultUser.displayName = 'John';
+                defaultUser.email = 'john@doe.com';
+                defaultUser.avatarBgColor = '5260ff';
+                defaultUser.avatarFontColor = 'fff';
+
+                localStorage.setItem('defaultUser', JSON.stringify(defaultUser));
+
+                loadDefaultUser();
+            }
+        }
+    ];
+
+    document.body.appendChild(alert);
+    return alert.present();
+}
+
+async function presentDeleteAllStoriesAlert() {
+    const alert = document.createElement('ion-alert');
+
+    alert.header = 'Do you want to delete all stories?';
+    alert.subHeader = 'You cannot undo this action';
+    alert.buttons = [
+        {
+            text: 'Cancel'
+        },
+        {
+            text: 'Confirm',
+            handler: () => {
+                stories = [];
+
+                localStorage.setItem('stories', JSON.stringify(stories));
+
+                loadStories();
+            }
+        }
+    ];
+
+    document.body.appendChild(alert);
+    return alert.present();
 }
 
 $(document).ready(function () {
@@ -159,6 +213,14 @@ $(document).ready(function () {
         else {
             presentToast('Error: Missing fields', 'danger');
         }
+    });
+
+    $(document).on('click', '#reset-profile-btn', function () {
+        presentProfileResetAlert();
+    });
+
+    $(document).on('click', '#delete-all-stories-btn', function () {
+        presentDeleteAllStoriesAlert();
     });
 
     $(document).on('keyup', '#search-story', function (e) {
