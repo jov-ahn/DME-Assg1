@@ -20,6 +20,9 @@ $(document).ready(function() {
 
     $('#save-story-changes-btn').click(function () {
         if ($('#edit-story-title').val() !== "" && $('#edit-story-contents').val() !== "") {
+            // Disables the button to prevent multiple submissions
+            $(this).attr('disabled', 'true');
+            
             const newStoryTitle = $('#edit-story-title').val();
             const newStoryContents = $('#edit-story-contents').val();
             

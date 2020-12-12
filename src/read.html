@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+</head>
+<body>
+    <ion-header translucent>
+        <ion-toolbar>
+            <ion-title>Read Story</ion-title>
+            <ion-buttons slot="start">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+                <ion-button href="index.html">Home</ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content fullscreen class="ion-padding-end">
+        <ion-item class="ion-margin-vertical">
+            <ion-input readonly id="read-story-title"></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-vertical">
+            <ion-textarea auto-grow readonly id="read-story-contents"></ion-textarea>
+        </ion-item>
+    </ion-content>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="js/read.js"></script>
+</body>
+</html>

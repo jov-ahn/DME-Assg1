@@ -14,7 +14,7 @@ function loadStories() {
         $('#list-of-stories').prepend(`
             <ion-text color="medium" class="ion-text-center">
                 <h4>No stories to display</h4>
-                <p>Tap on the plus icon to add one.</p>
+                <p>Tap on the plus icon to add one</p>
             </ion-text>
         `);
     }
@@ -22,7 +22,7 @@ function loadStories() {
     for (let i = 0; i < stories.length; i++) {
         $('#list-of-stories').prepend(`
             <ion-item-sliding class="view-story-details" id=${i}>
-                <ion-item>
+                <ion-item class="read-story-btn">
                     <ion-label>${stories[i].title}</ion-label>
                 </ion-item>
 
@@ -61,8 +61,11 @@ $(document).ready(function () {
 
     loadStories();
 
-    $(document).on('click', '#add-story', function () {
+    $(document).on('click', '#add-story-btn', function () {
         if ($('#story-title').val() !== "" && $('#story-contents').val() !== "") {
+            // Disables the button to prevent multiple submissions
+            $(this).attr('disabled', 'true');
+
             const storyTitle = $('#story-title').val();
             const storyContents = $('#story-contents').val();
             const newStory = new Story(storyTitle, storyContents);
@@ -79,15 +82,20 @@ $(document).ready(function () {
         }
     });
 
+    $(document).on('click', '.read-story-btn', function () {
+        sessionStorage.setItem('storyToRead', JSON.stringify($(this).closest('.view-story-details').attr('id')));
+        window.location.href = 'read.html';
+    });
+
+    $(document).on('click', '.edit-story-btn', function () {
+        sessionStorage.setItem('storyToEdit', JSON.stringify($(this).closest('.view-story-details').attr('id')));
+        window.location.href = 'edit.html';
+    });
+
     $(document).on('click', '.delete-story-btn', function () {
         const storyToDelete = $(this).closest('.view-story-details').attr('id');
         stories.splice(storyToDelete, 1);
         localStorage.setItem('stories', JSON.stringify(stories));
         loadStories();
-    })
-
-    $(document).on('click', '.edit-story-btn', function () {
-        sessionStorage.setItem('storyToEdit', JSON.stringify($(this).closest('.view-story-details').attr('id')));
-        window.location.href = 'edit.html';
-    })
+    });
 });
