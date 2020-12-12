@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <script type="module">
+        import { modalController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+        window.modalController = modalController;
+    </script>
+</head>
+
+<body>
+    <ion-app>
+        <ion-tabs>
+            <ion-tab tab="home">
+                <ion-header translucent>
+                    <ion-toolbar>
+                        <ion-title>Home</ion-title>
+                    </ion-toolbar>
+                </ion-header>
+
+                <ion-content fullscreen class="ion-padding">
+                    <ion-searchbar show-cancel-button="focus"></ion-searchbar>
+
+                    <h1 class="ion-text-center" id="storybook-title">Name's Life Storybook</h1>
+
+                    <ion-list class="ion-padding-end" id="list-of-stories"></ion-list>
+
+                    <ion-fab horizontal="center" vertical="bottom" slot="fixed">
+                        <ion-fab-button color="tertiary" id="create-story-btn">
+                            <ion-icon name="add"></ion-icon>
+                        </ion-fab-button>
+                    </ion-fab>
+                </ion-content>
+            </ion-tab>
+
+            <ion-tab tab="profile">
+                <ion-header translucent>
+                    <ion-toolbar>
+                        <ion-title>Profile</ion-title>
+                    </ion-toolbar>
+                </ion-header>
+
+                <ion-content fullscreen class="ion-padding">
+                    <h1>Profile</h1>
+                </ion-content>
+            </ion-tab>
+
+            <ion-tab-bar slot="bottom">
+                <ion-tab-button tab="home">
+                    <ion-icon name="home-outline"></ion-icon>
+                    <ion-label>Home</ion-label>
+                </ion-tab-button>
+
+                <ion-tab-button tab="profile">
+                    <ion-icon name="person-circle"></ion-icon>
+                    <ion-label>Profile</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
+    </ion-app>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+    <script>
+        customElements.define('modal-content', class ModalContent extends HTMLElement {
+            connectedCallback() {
+                this.innerHTML = `
+					<ion-header translucent>
+						<ion-toolbar>
+							<ion-title>Add Story</ion-title>
+							<ion-buttons slot="end">
+								<ion-button onclick="dismissModal()">Close</ion-button>
+							</ion-buttons>
+						</ion-toolbar>
+					</ion-header>
+					<ion-content fullscreen class="ion-padding-end">
+						<ion-item class="ion-margin-vertical">
+							<ion-label position="floating">Story Title</ion-label>
+							<ion-input clear-input id="story-title"></ion-input>
+						</ion-item>
+						<ion-item class="ion-margin-vertical">
+							<ion-textarea rows="20" placeholder="Tell your story..." id="story-contents"></ion-textarea>
+						</ion-item>
+						<div class="ion-padding-vertical ion-text-center">
+							<ion-button color="tertiary" shape="round" class="ion-margin-start" href="index.html" id="add-story">Add Story</ion-button>
+						</div>
+					</ion-content>
+                `;
+            }
+        });
+
+        let currentModal = null;
+        const createStoryBtn = $('#create-story-btn');
+        createStoryBtn.on('click', createModal);
+
+        async function createModal() {
+            const modal = await modalController.create({
+                component: 'modal-content'
+            });
+
+            await modal.present();
+            currentModal = modal;
+        }
+
+        function dismissModal() {
+            if (currentModal) {
+                currentModal.dismiss().then(() => { currentModal = null; });
+            }
+        }
+    </script>
+</body>
+
+</html>
