@@ -8,6 +8,17 @@ class Story {
 }
 
 function loadStories() {
+    $('#list-of-stories').children().remove();
+    
+    if (stories.length === 0) {
+        $('#list-of-stories').prepend(`
+            <ion-text color="medium" class="ion-text-center">
+                <h4>No stories to display</h4>
+                <p>Tap on the plus icon to add one.</p>
+            </ion-text>
+        `);
+    }
+
     for (let i = 0; i < stories.length; i++) {
         $('#list-of-stories').prepend(`
             <ion-item-sliding class="view-story-details" id=${i}>
@@ -40,7 +51,7 @@ async function presentToast(msg, color) {
 $(document).ready(function () {
     if (localStorage.getItem('stories') === null) {
         let defaultStory = new Story('Welcome to Storybook!', 'To get started, tap on the plus icon near the bottom of your screen.');
-        
+
         stories.push(defaultStory);
         localStorage.setItem('stories', JSON.stringify(stories));
     }
@@ -55,17 +66,27 @@ $(document).ready(function () {
             const storyTitle = $('#story-title').val();
             const storyContents = $('#story-contents').val();
             const newStory = new Story(storyTitle, storyContents);
-            
+
             stories.push(newStory);
             localStorage.setItem('stories', JSON.stringify(stories));
             presentToast(`New Story Added: ${storyTitle}`, 'success');
+            setTimeout(function () {
+                window.location.href = 'index.html';
+            }, 1000);
         }
         else {
             presentToast('Error: Missing fields', 'danger');
         }
     });
 
-    $(document).on('click', '.edit-story-btn', function() {
+    $(document).on('click', '.delete-story-btn', function () {
+        const storyToDelete = $(this).closest('.view-story-details').attr('id');
+        stories.splice(storyToDelete, 1);
+        localStorage.setItem('stories', JSON.stringify(stories));
+        loadStories();
+    })
+
+    $(document).on('click', '.edit-story-btn', function () {
         sessionStorage.setItem('storyToEdit', JSON.stringify($(this).closest('.view-story-details').attr('id')));
         window.location.href = 'edit.html';
     })
