@@ -55,43 +55,48 @@ https://xd.adobe.com/view/9c1d2818-284d-40fb-9bf8-ed29190232cc-c94e/?fullscreen
     6. Try to submit the form again while the success message is showing and verify that the action is blocked
     7. Wait for the success message to disappear and verify that you are automatically redirected back to the home tab.
     
-2. Editing a story:
+2. Reading a story:
+    1. Go to the "Home" tab
+    2. Tap on the title of any story and verify that the correct story appears
+    3. Tap on "Home" on the top left of the screen to return to the home tab.
+    
+3. Editing a story:
     1. Go to the "Home" tab
     2. Swipe right on any story
-    3. Tap on "Edit" and verify that the correct edit page shows up
+    3. Tap on "Edit" and verify that the correct edit page appears
     4. Try to submit an empty form and verify that an error message about the required fields appears
     5. Try to submit the form with one input valid and verify that an error message about the required fields appears
     6. Try to submit the form with all inputs valid and verify that a success message appears
     7. Try to submit the form again while the success message is showing and verify that the action is blocked
     8. Wait for the success message to disappear and verify that you are automatically redirected back to the home tab.
     
-3. Deleting a story:
+4. Deleting a story:
     1. Go to the "Home" tab
     2. Swipe left on the any story
     3. Tap on "Delete" and verify that the correct story is deleted
     
-4. Search for a story:
+5. Search for a story:
     1. Go to the "Home" tab
     2. Tap on "Search"
     3. Try searching for a story title and verify that it appears
     4. Try editing the story as shown above
     5. Try deleting the story as shown above and verify that you are automatically redirected back to the home tab.
     
-5. Delete all stories:
+6. Delete all stories:
     1. Go to the "Profile" tab
     2. Tap on "Delete All Stories" and verify that a confirmation box appears
     3. Tap on "Cancel" and verify that nothing changes
     4. Tap on "Delete All Stories" again
     5. Tap on "Confirm" and verify that all stories are deleted
     
-6. Customize profile:
+7. Customize profile:
     1. Go to the "Profile" tab
     2. Try to submit an empty form and verify that an error message about the required fields appears
     3. Try to submit the form with an empty display name OR email address and verify that an error message about the required fields appears
     4. Try to submit the form with an invalid hex code for the avatar background AND/OR font color and verify that the invalid input reverts back to its previous value
     5. Try to submit the form with all inputs valid and verify that a success message appears
     
-7. Reset profile:
+8. Reset profile:
     1. Go to the "Profile" tab
     2. Tap on "Reset Profile" and verify that a confirmation box appears
     3. Tap on "Cancel" and verify that nothing changes
