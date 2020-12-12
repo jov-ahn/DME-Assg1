@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Home - Storybook</title>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
@@ -26,11 +25,11 @@
                 </ion-header>
 
                 <ion-content fullscreen class="ion-padding">
-                    <ion-searchbar show-cancel-button="focus"></ion-searchbar>
+                    <ion-searchbar id="search-story"></ion-searchbar>
 
-                    <h1 class="ion-text-center" id="storybook-title">Name's Life Storybook</h1>
+                    <h1 class="ion-text-center"><span id="storybook-title">Name</span>'s Life Storybook</h1>
 
-                    <ion-list class="ion-padding-end" id="list-of-stories"></ion-list>
+                    <ion-list class="ion-padding-end" id="story-list"></ion-list>
 
                     <ion-fab horizontal="center" vertical="bottom" slot="fixed">
                         <ion-fab-button color="tertiary" id="create-story-btn">
@@ -48,7 +47,32 @@
                 </ion-header>
 
                 <ion-content fullscreen class="ion-padding">
-                    <h1>Profile</h1>
+                    <ion-text class="ion-text-center">
+                        <h1>Profile</h1>
+                    </ion-text>
+                    <div class="ion-text-center">
+                        <img id="profile-avatar">
+                    </div>
+                    <ion-item class="ion-margin-vertical">
+                        <ion-label position="floating">Display Name</ion-label>
+                        <ion-input clear-input id="profile-display-name"></ion-input>
+                    </ion-item>
+                    <ion-item class="ion-margin-vertical">
+                        <ion-label position="floating">Email</ion-label>
+                        <ion-input clear-input id="profile-email"></ion-input>
+                    </ion-item>
+                    <ion-item class="ion-margin-vertical">
+                        <ion-label position="floating">Avatar Background Color</ion-label>
+                        <ion-input clear-input id="profile-avatar-bg-color"></ion-input>
+                    </ion-item>
+                    <ion-item class="ion-margin-vertical">
+                        <ion-label position="floating">Avatar Font Color</ion-label>
+                        <ion-input clear-input id="profile-avatar-font-color"></ion-input>
+                    </ion-item>
+                    <div class="ion-padding-vertical ion-text-center">
+                        <ion-button color="tertiary" shape="round" class="ion-margin-start"
+                            id="save-profile-changes-btn">Save Changes</ion-button>
+                    </div>
                 </ion-content>
             </ion-tab>
 
@@ -66,7 +90,8 @@
         </ion-tabs>
     </ion-app>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="js/app.js"></script>
     <script>
         customElements.define('modal-content', class ModalContent extends HTMLElement {

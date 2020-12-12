@@ -8,7 +8,7 @@ async function presentToast(msg, color) {
     return toast.present();
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     const storyToEdit = JSON.parse(sessionStorage.getItem('storyToEdit'));
 
     let stories = JSON.parse(localStorage.getItem('stories'));
@@ -22,13 +22,13 @@ $(document).ready(function() {
         if ($('#edit-story-title').val() !== "" && $('#edit-story-contents').val() !== "") {
             // Disables the button to prevent multiple submissions
             $(this).attr('disabled', 'true');
-            
+
             const newStoryTitle = $('#edit-story-title').val();
             const newStoryContents = $('#edit-story-contents').val();
-            
+
             stories[storyToEdit].title = newStoryTitle;
             stories[storyToEdit].contents = newStoryContents;
-            
+
             localStorage.setItem('stories', JSON.stringify(stories));
             presentToast(`Story renamed to ${newStoryTitle}`, 'success');
             setTimeout(function () {

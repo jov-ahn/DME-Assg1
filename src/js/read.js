@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     const storyToRead = JSON.parse(sessionStorage.getItem('storyToRead'));
 
     const stories = JSON.parse(localStorage.getItem('stories'));
