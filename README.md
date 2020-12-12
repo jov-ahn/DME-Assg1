@@ -99,7 +99,7 @@ https://xd.adobe.com/view/9c1d2818-284d-40fb-9bf8-ed29190232cc-c94e/?fullscreen
     5. Tap on "Confirm" and verify that all inputs are reset to their default values.
     
 ### Bugs
-- Tapping on the clear icon in the searchbar after searching for a story does not load back the whole list of stories. Users will have to hit backspace IF they choose to use the clear icon.
+- Tapping on the clear icon in the search bar after searching for a story does not load back the whole list of stories. Users will have to hit backspace IF they choose to use the clear icon.
 
 ## Credits
 
