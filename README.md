@@ -14,7 +14,7 @@ Here are some User Stories:
 - As an aging old man, I want to leave stories behind, so that future generations will know about our time.
 
 Wireframes:
-https://xd.adobe.com/view/dfb7af14-67ef-4ac2-95d0-29796f9ec242-8ae4/?fullscreen
+https://xd.adobe.com/view/9c1d2818-284d-40fb-9bf8-ed29190232cc-c94e/?fullscreen
 
 ## Features
 
